@@ -1,3 +1,4 @@
+/build
 *.iml
 .gradle
 /local.properties
@@ -12,4 +13,10 @@
 /captures
 .externalNativeBuild
 .cxx
+/.idea/
+/gradle/wrapper/
 local.properties
+/app/development/debug/
+/app/huawieProduction/release/
+/app/libs/
+/app/production/
