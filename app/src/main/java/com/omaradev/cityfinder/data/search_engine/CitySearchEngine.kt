@@ -12,8 +12,8 @@ class CitySearchEngine {
 
     fun insert(city: CityDto) {
         var node = root
-        val word = city.name.lowercase()
-        for (char in word) {
+        val cityName = city.name.lowercase()
+        for (char in cityName) {
             node = node.children.getOrPut(char) { CityNode() }
         }
         node.cities.add(city)
@@ -21,8 +21,8 @@ class CitySearchEngine {
 
     fun search(prefix: String): List<CityDto> {
         var node = root
-        val word = prefix.lowercase()
-        for (char in word) {
+        val cityName = prefix.lowercase()
+        for (char in cityName) {
             node = node.children[char] ?: return emptyList()
         }
         return collectCities(node)
@@ -35,5 +35,9 @@ class CitySearchEngine {
             result.addAll(collectCities(child))
         }
         return result
+    }
+
+    fun getAllCities(): List<CityDto> {
+        return collectCities(root)
     }
 }
