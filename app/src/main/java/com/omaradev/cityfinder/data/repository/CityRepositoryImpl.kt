@@ -58,7 +58,6 @@ class CityRepositoryImpl @Inject constructor(
                     cityDto?.let {
                         cities.add(
                             CityEntity(
-                                imageId = it.id,
                                 name = it.name,
                                 country = it.country,
                                 lat = it.coord.lat,

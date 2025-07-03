@@ -6,7 +6,7 @@ import com.omaradev.cityfinder.data.local.entity.CityEntity
 
 @Database(
     entities = [CityEntity::class],
-    version = 2,
+    version = 1,
     exportSchema = false
 )
 abstract class CityDatabase : RoomDatabase() {

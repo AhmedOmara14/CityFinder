@@ -10,5 +10,4 @@ data class CityEntity(
     val country: String,
     val lat: Double,
     val lon: Double,
-    val imageId: Long,
 )

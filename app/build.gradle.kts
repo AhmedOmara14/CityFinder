@@ -87,5 +87,6 @@ dependencies {
     // Room compiler (KSP)
     ksp("androidx.room:room-compiler:2.6.1")
 
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
 
 }

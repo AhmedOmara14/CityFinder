@@ -4,7 +4,7 @@ import com.omaradev.cityfinder.data.local.entity.CityEntity
 import com.omaradev.cityfinder.domain.model.City
 
 fun CityEntity.toDomain(): City = City(
-    id = imageId,
+    id = id,
     name = name,
     country = country,
     latitude = lat,

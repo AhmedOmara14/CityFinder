@@ -11,7 +11,8 @@ composeBom = "2024.02.01"  # Latest stable Compose BOM
 hilt = "2.51.1"  # Latest Hilt
 ksp = "2.0.0-1.0.21"  # KSP version for Kotlin 2.0.0 (check https://github.com/google/ksp/releases)
 kotlinSerialization = "1.6.0"
-hiltNavigationCompose = "1.2.0"  # For Hilt + Compose Navigation
+hiltNavigationCompose = "1.2.0"
+constraintlayout = "2.2.1"  # For Hilt + Compose Navigation
 
 [libraries]
 # AndroidX
