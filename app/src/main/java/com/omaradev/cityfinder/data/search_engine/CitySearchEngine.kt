@@ -25,19 +25,21 @@ class CitySearchEngine {
         for (char in cityName) {
             node = node.children[char] ?: return emptyList()
         }
-        return collectCities(node)
-    }
-
-    private fun collectCities(node: CityNode): List<CityDto> {
         val result = mutableListOf<CityDto>()
-        result.addAll(node.cities)
-        for (child in node.children.values) {
-            result.addAll(collectCities(child))
-        }
+        collectCities(node, result)
         return result
     }
 
     fun getAllCities(): List<CityDto> {
-        return collectCities(root)
+        val result = mutableListOf<CityDto>()
+        collectCities(root, result)
+        return result
+    }
+
+    private fun collectCities(node: CityNode, result: MutableList<CityDto>) {
+        result.addAll(node.cities)
+        for (child in node.children.values) {
+            collectCities(child, result)
+        }
     }
 }
