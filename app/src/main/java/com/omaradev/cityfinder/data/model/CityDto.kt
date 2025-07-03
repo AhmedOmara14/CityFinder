@@ -1,17 +1,17 @@
 package com.omaradev.cityfinder.data.model
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
-@Serializable
+@JsonClass(generateAdapter = true)
 data class CityDto(
-    @SerialName("_id") val id: Long,
+    @Json(name = "_id") val id: Long,
     val name: String,
     val country: String,
     val coord: CoordDto
 )
 
-@Serializable
+@JsonClass(generateAdapter = true)
 data class CoordDto(
     val lon: Double,
     val lat: Double
