@@ -69,24 +69,19 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // Kotlinx Serialization
     implementation(libs.kotlinx.serialization.json)
 
-    // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
 
-    implementation("com.squareup.moshi:moshi:1.15.1")
-    implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
 
-    // Room core + Kotlin Extensions
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
 
-    // Room compiler (KSP)
-    ksp("androidx.room:room-compiler:2.6.1")
+    ksp(libs.androidx.room.compiler)
 
-    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
-
+    implementation(libs.androidx.constraintlayout.compose)
 }
