@@ -29,7 +29,7 @@ class CitySearchViewModel @Inject constructor(
         viewModelScope.launch {
             val results = getAllCitiesUseCase()
             val grouped = results.groupBy { it.name.first().uppercaseChar() }
-            uiState = uiState.copy(groupedCities = grouped)
+            uiState = uiState.copy(groupedCities = grouped, isLoading = false)
         }
     }
 
@@ -40,11 +40,12 @@ class CitySearchViewModel @Inject constructor(
             val results = if (query.isBlank()) {
                 getAllCitiesUseCase()
             } else {
+                uiState = uiState.copy(isLoading = true)
                 searchCityUseCase(query)
             }
 
             val grouped = results.groupBy { it.name.first().uppercaseChar() }
-            uiState = uiState.copy(groupedCities = grouped)
+            uiState = uiState.copy(groupedCities = grouped, isLoading = false)
         }
     }
 

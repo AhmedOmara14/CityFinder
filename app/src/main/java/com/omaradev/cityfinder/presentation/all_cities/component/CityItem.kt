@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
@@ -54,7 +55,7 @@ fun CityItem(city: City) {
                     top.linkTo(parent.top)
                 }
                 .padding(top = 16.dp, start = 32.dp, end = 16.dp, bottom = 16.dp)
-                .background(Color.White, RoundedCornerShape(12.dp))
+                .background(Color.White, RoundedCornerShape(16.dp))
                 .padding(24.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -90,7 +91,43 @@ fun CityItem(city: City) {
     }
 }
 
+@Composable
+fun CityItemShimmer() {
+    ConstraintLayout(
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
+        val (line, card) = createRefs()
 
+        Box(
+            modifier = Modifier
+                .padding(start = 20.dp)
+                .width(1.dp)
+                .constrainAs(line) {
+                    top.linkTo(card.top)
+                    bottom.linkTo(card.bottom)
+                    start.linkTo(parent.start)
+                    height = androidx.constraintlayout.compose.Dimension.fillToConstraints
+                }
+                .background(Color.Gray)
+        )
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(150.dp)
+                .constrainAs(card) {
+                    start.linkTo(line.end)
+                    end.linkTo(parent.end)
+                    top.linkTo(parent.top)
+                }
+                .padding(top = 16.dp, start = 32.dp, end = 16.dp, bottom = 16.dp)
+                .shimmerEffect(16.dp)
+                .padding(24.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ){}
+    }
+}
 
 
 @Preview
@@ -105,4 +142,10 @@ private fun CityItemPreview() {
             longitude = -74.0060
         )
     )
+}
+
+@Preview
+@Composable
+private fun CityItemShimmerPreview() {
+    CityItemShimmer()
 }

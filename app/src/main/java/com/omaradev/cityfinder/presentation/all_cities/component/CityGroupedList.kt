@@ -22,6 +22,7 @@ import com.omaradev.cityfinder.domain.model.City
 
 @Composable
 fun CityGroupedList(
+    modifier: Modifier = Modifier,
     groupedCities: Map<Char, List<City>>,
     isSectionExpanded: (Char) -> Boolean,
     onToggleSection: (Char) -> Unit
@@ -32,7 +33,7 @@ fun CityGroupedList(
         val firstLetter = sortedGroups.firstKey()
 
         LazyColumn(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxSize()
                 .padding(24.dp)
         ) {
