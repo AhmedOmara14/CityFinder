@@ -15,10 +15,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.omaradev.cityfinder.domain.model.City
+import com.omaradev.cityfinder.utils.navigateToMapWithLatAndLng
 
 @Composable
 fun CityGroupedList(
@@ -28,6 +30,7 @@ fun CityGroupedList(
     onToggleSection: (Char) -> Unit
 ) {
     val sortedGroups = groupedCities.toSortedMap()
+    val context = LocalContext.current
 
     if (sortedGroups.isNotEmpty()) {
         val firstLetter = sortedGroups.firstKey()
@@ -48,7 +51,13 @@ fun CityGroupedList(
 
                 if (isSectionExpanded(letter)) {
                     items(cities) { city ->
-                        CityItem(city)
+                        CityItem(city) { latitude,longitude ->
+                            navigateToMapWithLatAndLng(
+                                context = context,
+                                latitude = latitude,
+                                longitude = longitude
+                            )
+                        }
                     }
                 }
 
@@ -123,7 +132,7 @@ fun LastCircleLetterSection() {
                 .background(Color.Gray, CircleShape)
                 .border(1.dp, Color.Gray, CircleShape),
             contentAlignment = Alignment.Center
-        ){}
+        ) {}
     }
 }
 
